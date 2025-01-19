@@ -8,7 +8,7 @@ import {
   createTestClient,
 } from 'viem'
 
-import { type Chain, mainnet, mainnet2, optimism } from './chains.js'
+import { type Chain, mainnet, mainnet2, optimism, zksync } from './chains.js'
 
 export const mainnetTestClient = createTestClient({
   mode: 'anvil',
@@ -28,6 +28,13 @@ export const optimismTestClient = createTestClient({
   mode: 'anvil',
   cacheTime: 0,
   chain: optimism,
+  transport: http(),
+}).extend(wagmiTestMethods)
+
+export const zksyncTestClient = createTestClient({
+  mode: 'anvil',
+  cacheTime: 0,
+  chain: zksync,
   transport: http(),
 }).extend(wagmiTestMethods)
 
